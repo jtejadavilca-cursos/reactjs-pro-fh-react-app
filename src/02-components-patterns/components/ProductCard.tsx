@@ -1,8 +1,14 @@
-import { createContext, ReactElement } from "react";
+import { createContext } from "react";
 
 import { useProduct } from "../hooks";
 import styles from "../styles/styles.module.css";
-import { onChangeArgs, Product, ProductCartInitialValues, ProductContextProps } from "../interfaces";
+import {
+    onChangeArgs,
+    Product,
+    ProductCardHandlers,
+    ProductCartInitialValues,
+    ProductContextProps,
+} from "../interfaces";
 import { ProductImage } from "./ProductCardImage";
 import { ProductTitle } from "./ProductCardTitle";
 import { ProductButtons } from "./ProductCardButtons";
@@ -17,7 +23,8 @@ const { Provider } = ProductContext;
 
 export interface Props {
     product: Product;
-    children?: ReactElement | ReactElement[];
+    //children?: ReactElement | ReactElement[];
+    children?: (args: ProductCardHandlers) => JSX.Element;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (args: onChangeArgs) => void;
@@ -26,7 +33,12 @@ export interface Props {
 }
 
 export const ProductCard = ({ children, product, className, style, onChange, value, initialValues }: Props) => {
-    const { counter, increaseBy } = useProduct({ onChange, product, value, initialValues });
+    const { counter, maxCount, isMaxCountReached, increaseBy, reset } = useProduct({
+        onChange,
+        product,
+        value,
+        initialValues,
+    });
 
     return (
         <Provider
@@ -34,10 +46,19 @@ export const ProductCard = ({ children, product, className, style, onChange, val
                 counter,
                 increaseBy,
                 product,
+                maxCount,
             }}
         >
             <div className={`${styles.productCard} ${className}`} style={style}>
-                {children}
+                {children &&
+                    children({
+                        count: counter,
+                        increaseBy,
+                        isMaxCountReached,
+                        maxCount,
+                        product,
+                        reset,
+                    })}
             </div>
         </Provider>
     );
