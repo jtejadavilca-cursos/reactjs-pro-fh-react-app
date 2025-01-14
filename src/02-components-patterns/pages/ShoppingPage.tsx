@@ -1,57 +1,13 @@
-import { useState } from "react";
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components";
 import "../styles/custom-styles.css";
 import { Product } from "../interfaces";
+import { useShoppingCart } from "../hooks";
 
-// const products = [
 const product: Product = { id: "1", title: "Coffee Mug", img: "./coffee-mug.png" };
 const product2: Product = { id: "2", title: "Coffee Mug - Meme", img: "./coffee-mug2.png" };
-//{ id: "2", title: "T-Shirt" },
-// ];
-
-interface ProductInCart extends Product {
-    count: number;
-}
 
 export const ShoppingPage = () => {
-    const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({
-        // '1': { ...product, count: 0 },
-        // '2': { ...product2, count: 0 },
-    });
-
-    const onProductCountChange = ({ count, product }: { count: number; product: Product }) => {
-        console.log("count", count);
-        console.log("product", product);
-
-        if (count === 0) {
-            setShoppingCart((prev) => {
-                const newCart = { ...prev };
-                delete newCart[product.id];
-                return newCart;
-            });
-            return;
-        }
-
-        setShoppingCart((prev) => {
-            const productId = product.id;
-
-            return {
-                ...prev,
-                [productId]: {
-                    ...product,
-                    count,
-                },
-            };
-        });
-
-        // setShoppingCart({
-        //     ...shoppingCart,
-        //     [productId]: {
-        //         ...shoppingCart[productId],
-        //         count: shoppingCart[productId]?.count ? shoppingCart[productId].count + count : count,
-        //     },
-        // });
-    };
+    const { shoppingCart, onProductCountChange } = useShoppingCart();
 
     return (
         <div style={{ padding: "20px", width: "100%" }}>
