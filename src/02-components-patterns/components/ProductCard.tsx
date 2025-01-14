@@ -2,7 +2,7 @@ import { createContext, ReactElement } from "react";
 
 import { useProduct } from "../hooks";
 import styles from "../styles/styles.module.css";
-import { onChangeArgs, Product, ProductContextProps } from "../interfaces";
+import { onChangeArgs, Product, ProductCartInitialValues, ProductContextProps } from "../interfaces";
 import { ProductImage } from "./ProductCardImage";
 import { ProductTitle } from "./ProductCardTitle";
 import { ProductButtons } from "./ProductCardButtons";
@@ -22,10 +22,11 @@ export interface Props {
     style?: React.CSSProperties;
     onChange?: (args: onChangeArgs) => void;
     value?: number;
+    initialValues?: ProductCartInitialValues;
 }
 
-export const ProductCard = ({ children, product, className, style, onChange, value }: Props) => {
-    const { counter, increaseBy } = useProduct({ onChange, product, value });
+export const ProductCard = ({ children, product, className, style, onChange, value, initialValues }: Props) => {
+    const { counter, increaseBy } = useProduct({ onChange, product, value, initialValues });
 
     return (
         <Provider
@@ -37,11 +38,6 @@ export const ProductCard = ({ children, product, className, style, onChange, val
         >
             <div className={`${styles.productCard} ${className}`} style={style}>
                 {children}
-                {/* <ProductImage img={product.img} title={product.title} />
-
-            <ProductTitle title={product.title} />
-
-            <ProductButtons counter={counter} increaseBy={increaseBy} /> */}
             </div>
         </Provider>
     );

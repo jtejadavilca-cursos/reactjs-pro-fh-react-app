@@ -9,24 +9,15 @@ export const useShoppingCart = () => {
     const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
     const onProductCountChange = ({ count, product }: { count: number; product: Product }) => {
-        console.log("onProductCountChange", count, product);
         setShoppingCart((oldShoppingCart) => {
-            const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
-
-            const newValue = Math.max(0, productInCart.count + count);
-
-            if (newValue === 0) {
-                const newCart = { ...oldShoppingCart };
-                delete newCart[product.id];
-                return newCart;
+            if (count === 0) {
+                const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+                return rest;
             }
 
             return {
                 ...oldShoppingCart,
-                [product.id]: {
-                    ...product,
-                    count: newValue,
-                },
+                [product.id]: { ...product, count },
             };
         });
     };
