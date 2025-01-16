@@ -1,12 +1,8 @@
-
-
 .productCard {
-    background-color: #1E2025;
+    background-color: white;
     border-radius: 15px;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
-    color: white;
+    color: black;
     padding-bottom: 5px;
-    font-family: Arial, Helvetica, sans-serif;
     width: 250px;
     margin-right: 5px;
     margin-top: 5px;
@@ -30,9 +26,8 @@
 .buttonMinus {
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 5px 0px 0px 5px;
-    color: white;
     font-size: 20px;
     width: 30px;
 }
@@ -42,9 +37,8 @@
 }
 
 .countLabel {
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
-    color: white;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     font-size: 16px;
     height: 25px;
     padding-top: 5px;
@@ -55,9 +49,8 @@
 .buttonAdd {
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 0px 5px 5px 0px;
-    color: white;
     font-size: 20px;
     width: 30px;
 }
@@ -66,9 +59,9 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-
 .disabled {
-    border-color: grey !important;
+    background-color: grey !important;
     border-left: 1px solid white !important;
     color: grey !important;
+    /*cursor: not-allowed;*/
 }
