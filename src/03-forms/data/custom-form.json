@@ -1,0 +1,95 @@
+[
+    {
+        "type": "input",
+        "name": "firstName",
+        "label": "First Name",
+        "placeholder": "Johns",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "First Name is required"
+            },
+            {
+                "type": "minLength",
+                "value": 3,
+                "message": "First Name must be at least 3 characters"
+            },
+            {
+                "type": "maxLength",
+                "value": 10,
+                "message": "First Name must be at most 10 characters"
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "label": "Last Name",
+        "placeholder": "Doe",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "Last Name is required"
+            },
+            {
+                "type": "minLength",
+                "value": 3,
+                "message": "Last Name must be at least 3 characters"
+            },
+            {
+                "type": "maxLength",
+                "value": 10,
+                "message": "Last Name must be at most 10 characters"
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "label": "Email",
+        "placeholder": "user@email.com",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "First Name is required"
+            },
+            {
+                "type": "email",
+                "message": "Invalid email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "favoriteGame",
+        "label": "Favorite Game",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "First Name is required"
+            }
+        ],
+        "options": [
+            {
+                "label": "Select a game",
+                "value": ""
+            },
+            {
+                "label": "Chess",
+                "value": "chess"
+            },
+            {
+                "label": "Checkers",
+                "value": "checkers"
+            },
+            {
+                "label": "Go",
+                "value": "go"
+            }
+        ]
+    }
+]

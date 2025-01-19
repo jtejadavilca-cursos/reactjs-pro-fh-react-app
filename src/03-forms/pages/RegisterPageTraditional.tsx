@@ -36,7 +36,7 @@ export const RegisterPageTraditional = () => {
 
     return (
         <div>
-            <h1>Register Page</h1>
+            <h1>Register Traditional Page</h1>
             <form noValidate onSubmit={handleOnSubmit}>
                 <input type="text" name="name" placeholder="Name" value={name} onChange={handleInputChange} />
                 <input type="email" name="email" placeholder="Email" value={email} onChange={handleInputChange} />
